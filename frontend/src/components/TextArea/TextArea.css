@@ -1,0 +1,17 @@
+.text-area {
+  width: 100%;
+  min-height: 170px;
+  padding: 16px;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  resize: vertical;
+  background: #020617;
+  color: #f8fafc;
+  font-size: 14px;
+  line-height: 1.5;
+  outline: none;
+}
+
+.text-area:focus {
+  border-color: #38bdf8;
+}

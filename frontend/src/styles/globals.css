@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+button,
+textarea {
+  font-family: inherit;
+}
+
+.home-page {
+  width: 420px;
+  min-height: 560px;
+  padding: 28px;
+  background: linear-gradient(180deg, #111827 0%, #020617 100%);
+}
+
+.hero {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #38bdf8;
+}
+
+h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.05;
+}
+
+.subtitle {
+  margin-top: 12px;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.error-message {
+  margin-top: 14px;
+  color: #fca5a5;
+  font-size: 14px;
+}
