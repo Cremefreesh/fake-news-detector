@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { predictFakeNews } from "./services/api";
-import PredictionCard from "./components/PredictionCard";
+import PredictionCard from "./components/PredictionCard/PredictionCard";
 import "./App.css";
 
 function App() {
