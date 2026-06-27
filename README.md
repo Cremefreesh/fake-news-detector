@@ -8,7 +8,7 @@ Evaluated model performance using accuracy, precision, recall and F1-score,
 and packaged the project using Chrome Manifest V3.
 
 
-                 Chrome Extension
+                  Chrome Extension
                         │
                 React Frontend
                         │
