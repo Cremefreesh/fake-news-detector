@@ -1,5 +1,5 @@
 AI Fake News Detection Chrome Extension
-Built a Chrome extension that analyses social media posts and news articles in real time.
+A Chrome extension that analyses social media posts and news articles in real time.
 
 Using a custom PyTorch fake-news classifier. 
 Developed a FastAPI backend for model inference, integrated LLM-generated explanations for interpretability, 
