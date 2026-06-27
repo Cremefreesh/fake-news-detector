@@ -7,17 +7,13 @@ and built a React/JavaScript frontend for browser deployment.
 Evaluated model performance using accuracy, precision, recall and F1-score, 
 and packaged the project using Chrome Manifest V3.
 
-
-                  Chrome Extension
-                        │
-                React Frontend
-                        │
-                  FastAPI Backend
-        ┌───────────────┼────────────────┐
-        │               │                │
-        ▼               ▼                ▼
- PyTorch Classifier  Embedding Search  LLM Explanation
-        │               │                │
-        └───────────────┼────────────────┘
-                        ▼
-                  Final Prediction
+Chrome Extension 
+      |
+      ->   React Frontend 
+                |
+    ---------------FASTapi Backend--------------------
+    |                         |                      |
+Pytorch Classifier     Embedding Search      LLM Explanation
+    |                         |                      |
+    |                         |                      |
+    --------------->    Final Prediction     <--------
