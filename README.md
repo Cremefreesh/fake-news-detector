@@ -41,3 +41,18 @@ Saved Model (.pt)
 
 
 I built the preprocessing pipeline, trained the model in PyTorch, evaluated it with precision, recall, F1-score, and deployed it behind a FastAPI API.
+
+
+Collect data
+↓
+Understand data
+↓
+Clean data
+↓
+Explore data
+↓
+Split data
+↓
+Engineer features
+↓
+Train model
