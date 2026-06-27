@@ -37,3 +37,7 @@ Training
 Evaluation
       │
 Saved Model (.pt)
+
+
+
+I built the preprocessing pipeline, trained the model in PyTorch, evaluated it with precision, recall, F1-score, and deployed it behind a FastAPI API.
