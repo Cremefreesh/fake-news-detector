@@ -1,4 +1,4 @@
-AI Fake News Detection Chrome Extension
+AI Fake News Detection Chrome Extension -
 A Chrome extension that analyses social media posts and news articles in real time.
 
 Using a custom PyTorch fake-news classifier. 
