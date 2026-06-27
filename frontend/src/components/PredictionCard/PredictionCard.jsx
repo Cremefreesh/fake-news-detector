@@ -1,18 +1,16 @@
+import "./PredictionCard.css";
+
 function PredictionCard({ result }) {
   if (!result) return null;
 
   return (
-    <div className="prediction-card">
-      <h2>{result.label}</h2>
-
-      <p>
-        <strong>Confidence:</strong> {Math.round(result.confidence * 100)}%
+    <section className="prediction-card">
+      <p className="result-label">{result.label}</p>
+      <p className="confidence">
+        Confidence: {Math.round(result.confidence * 100)}%
       </p>
-
-      <p>
-        <strong>Explanation:</strong> {result.explanation}
-      </p>
-    </div>
+      <p className="explanation">{result.explanation}</p>
+    </section>
   );
 }
 
