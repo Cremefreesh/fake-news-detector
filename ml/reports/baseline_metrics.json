@@ -1,0 +1,15 @@
+{
+  "validation": {
+    "accuracy": 0.985675306957708,
+    "precision": 0.9901997738409348,
+    "recall": 0.9783985102420857,
+    "f1": 0.9842637692019482
+  },
+  "test": {
+    "accuracy": 0.9856777493606138,
+    "precision": 0.9916824196597354,
+    "recall": 0.9769087523277468,
+    "f1": 0.9842401500938086
+  },
+  "test_classification_report": "              precision    recall  f1-score   support\n\n           0       0.98      0.99      0.99      3180\n           1       0.99      0.98      0.98      2685\n\n    accuracy                           0.99      5865\n   macro avg       0.99      0.98      0.99      5865\nweighted avg       0.99      0.99      0.99      5865\n"
+}
