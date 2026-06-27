@@ -31,13 +31,17 @@ def predict(request: PredictionRequest):
     model_result = predict_fake_news(request.text)
 
     explanation = generate_explanation(
-        text=request.text,
         label=model_result["label"],
         confidence=model_result["confidence"],
+        risk_level=model_result["risk_level"],
+        influential_words=model_result["influential_words"],
     )
 
     return PredictionResponse(
         label=model_result["label"],
         confidence=model_result["confidence"],
+        risk_level=model_result["risk_level"],
+        model_name=model_result["model_name"],
+        influential_words=model_result["influential_words"],
         explanation=explanation,
     )

@@ -1,16 +1,22 @@
-def generate_explanation(text: str, label: str, confidence: float) -> str:
-    """
-    Temporary explanation function.
-    Later this can call an LLM API.
-    """
+def generate_explanation(
+    label: str,
+    confidence: float,
+    risk_level: str,
+    influential_words: list[str],
+) -> str:
+    confidence_percent = round(confidence * 100)
+
+    words = ", ".join(influential_words[:5])
 
     if label == "Potentially Fake":
         return (
-            f"This content was flagged with {confidence * 100:.0f}% confidence because "
-            "it contains language often associated with exaggerated or misleading claims."
+            f"This content was classified as potentially fake with "
+            f"{confidence_percent}% confidence. Risk level: {risk_level}. "
+            f"The model paid attention to terms such as: {words}."
         )
 
     return (
-        f"This content was classified as likely reliable with {confidence * 100:.0f}% confidence. "
-        "The current dummy model did not detect obvious suspicious wording."
+        f"This content was classified as likely real with "
+        f"{confidence_percent}% confidence. Risk level: {risk_level}. "
+        f"The model paid attention to terms such as: {words}."
     )
