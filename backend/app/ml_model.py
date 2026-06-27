@@ -1,36 +1,29 @@
-import random
+from pathlib import Path
+import joblib
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+VECTORIZER_PATH = PROJECT_ROOT / "ml" / "models" / "tfidf_vectorizer.joblib"
+MODEL_PATH = PROJECT_ROOT / "ml" / "models" / "baseline_logistic_regression.joblib"
+
+
+vectorizer = joblib.load(VECTORIZER_PATH)
+model = joblib.load(MODEL_PATH)
 
 
 def predict_fake_news(text: str) -> dict:
-    """
-    Temporary dummy model.
-    Later we will replace this with a real PyTorch model.
-    """
+    text_vector = vectorizer.transform([text])
 
-    suspicious_words = [
-        "shocking",
-        "secret",
-        "exposed",
-        "miracle",
-        "urgent",
-        "they don't want you to know",
-        "breaking",
-    ]
+    prediction = model.predict(text_vector)[0]
+    probabilities = model.predict_proba(text_vector)[0]
 
-    text_lower = text.lower()
+    confidence = float(max(probabilities))
 
-    score = 0
-
-    for word in suspicious_words:
-        if word in text_lower:
-            score += 1
-
-    if score > 0:
+    if prediction == 1:
         label = "Potentially Fake"
-        confidence = min(0.65 + score * 0.08, 0.95)
     else:
         label = "Likely Real"
-        confidence = random.uniform(0.55, 0.75)
 
     return {
         "label": label,
