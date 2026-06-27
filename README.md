@@ -36,7 +36,7 @@ Training
       │
 Evaluation
       │
-Saved Model (.pt)
+Saved Model
 
 
 
