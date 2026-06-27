@@ -36,7 +36,7 @@ Training
       │
 Evaluation
       │
-Saved Model (.pt)
+Saved Model
 
 
 
@@ -56,3 +56,8 @@ Split data
 Engineer features
 ↓
 Train model
+
+
+Fake: 23,481
+Real: 21,417
+Articles of data for our dataset 
