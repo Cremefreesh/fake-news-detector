@@ -17,3 +17,23 @@ Pytorch Classifier     Embedding Search      LLM Explanation
     |                         |                      |
     |                         |                      |
     --------------->    Final Prediction     <--------
+
+
+
+Raw Dataset
+      │
+Cleaning
+      │
+Tokenization
+      │
+Vocabulary
+      │
+PyTorch Dataset
+      │
+Neural Network
+      │
+Training
+      │
+Evaluation
+      │
+Saved Model (.pt)
