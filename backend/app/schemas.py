@@ -11,4 +11,11 @@ class PredictionResponse(BaseModel):
     risk_level: str
     model_name: str
     influential_words: list[str]
+    similar_articles: list[SimilarArticle]
     explanation: str
+
+    
+class SimilarArticle(BaseModel):
+    label: str
+    similarity: float
+    preview: str

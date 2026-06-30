@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.schemas import PredictionRequest, PredictionResponse
 from app.ml_model import predict_fake_news
 from app.explanation_service import generate_explanation
-
+from app.semantic_search import semantic_search_service
 
 app = FastAPI(
     title="Fake News Detector API",
@@ -29,6 +29,7 @@ def health_check():
 @app.post("/predict", response_model=PredictionResponse)
 def predict(request: PredictionRequest):
     model_result = predict_fake_news(request.text)
+    similar_articles = semantic_search_service.find_similar(request.text)
 
     explanation = generate_explanation(
         label=model_result["label"],
@@ -43,5 +44,6 @@ def predict(request: PredictionRequest):
         risk_level=model_result["risk_level"],
         model_name=model_result["model_name"],
         influential_words=model_result["influential_words"],
+        similar_articles=similar_articles,
         explanation=explanation,
     )
