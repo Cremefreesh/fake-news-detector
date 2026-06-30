@@ -74,6 +74,18 @@ class TorchFakeNewsPredictor:
             logits = self.model(input_tensor)
             probabilities = F.softmax(logits, dim=1)[0]
 
+        print("INPUT:")
+        print(text)
+
+        print("\nLOGITS:")
+        print(logits)
+
+        print("\nPROBABILITIES:")
+        print(probabilities)
+
+        print("\nCLASS:")
+        print(torch.argmax(probabilities).item())
+
         predicted_class = int(torch.argmax(probabilities).item())
         confidence = float(probabilities[predicted_class].item())
 
