@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { predictFakeNews } from "../api/api";
+import { predictFakeNews, getCurrentPageText } from "../api/api";
 import Button from "../components/Button/Button";
 import TextArea from "../components/TextArea/TextArea";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
@@ -11,9 +11,9 @@ function Home() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  async function handleAnalyse() {
-    if (!text.trim()) {
-      setError("Please enter some text to analyse.");
+  async function analyseText(textToAnalyse) {
+    if (!textToAnalyse.trim()) {
+      setError("Please enter or scan some text to analyse.");
       return;
     }
 
@@ -22,11 +22,31 @@ function Home() {
       setError("");
       setResult(null);
 
-      const prediction = await predictFakeNews(text);
+      const prediction = await predictFakeNews(textToAnalyse);
       setResult(prediction);
     } catch {
       setError("Could not connect to the prediction API.");
     } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleAnalyse() {
+    await analyseText(text);
+  }
+
+  async function handleScanPage() {
+    try {
+      setLoading(true);
+      setError("");
+      setResult(null);
+
+      const pageText = await getCurrentPageText();
+      setText(pageText.slice(0, 3000));
+
+      await analyseText(pageText);
+    } catch {
+      setError("Could not scan the current page. Try refreshing the page.");
       setLoading(false);
     }
   }
@@ -37,8 +57,7 @@ function Home() {
         <p className="eyebrow">AI Browser Safety Tool</p>
         <h1>Fake News Detector</h1>
         <p className="subtitle">
-          Paste a headline, article paragraph, or social media post and get an
-          instant credibility prediction.
+          Paste text or scan the current webpage for a credibility prediction.
         </p>
       </section>
 
@@ -49,7 +68,11 @@ function Home() {
       />
 
       <Button onClick={handleAnalyse} disabled={loading}>
-        {loading ? "Analysing..." : "Analyse content"}
+        {loading ? "Analysing..." : "Analyse pasted text"}
+      </Button>
+
+      <Button onClick={handleScanPage} disabled={loading}>
+        Scan current page
       </Button>
 
       {loading && <LoadingSpinner />}
