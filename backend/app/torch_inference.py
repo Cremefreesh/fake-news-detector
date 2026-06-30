@@ -11,7 +11,7 @@ import sys
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT / "ml"))
 
-from ml.torch_model import FakeNewsLSTM  # noqa: E402
+from torch_model import FakeNewsLSTM  # noqa: E402
 
 
 MODEL_PATH = PROJECT_ROOT / "ml" / "models" / "pytorch_lstm_fake_news.pt"
