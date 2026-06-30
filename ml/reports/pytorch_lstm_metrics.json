@@ -1,0 +1,55 @@
+{
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.08946879783636569,
+      "val_loss": 0.010801661192722942,
+      "val_accuracy": 0.9984652114597544,
+      "val_precision": 0.9966592427616926,
+      "val_recall": 1.0,
+      "val_f1": 0.9983268265476855
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.009839866654844041,
+      "val_loss": 0.009483752254037308,
+      "val_accuracy": 0.9986357435197817,
+      "val_precision": 0.9970293353137765,
+      "val_recall": 1.0,
+      "val_f1": 0.9985124581628858
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.004570407742164131,
+      "val_loss": 0.009678610185010652,
+      "val_accuracy": 0.9986357435197817,
+      "val_precision": 0.9970293353137765,
+      "val_recall": 1.0,
+      "val_f1": 0.9985124581628858
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0035063505475871727,
+      "val_loss": 0.012357937279059273,
+      "val_accuracy": 0.9986357435197817,
+      "val_precision": 0.9970293353137765,
+      "val_recall": 1.0,
+      "val_f1": 0.9985124581628858
+    }
+  ],
+  "test_metrics": {
+    "loss": 0.008363903824868865,
+    "accuracy": 0.9986359761295822,
+    "precision": 0.9977686872443288,
+    "recall": 0.9992551210428305,
+    "f1": 0.9985113509490138
+  },
+  "config": {
+    "batch_size": 64,
+    "epochs": 4,
+    "learning_rate": 0.001,
+    "max_length": 300,
+    "vocab_size": 50002,
+    "model": "Bidirectional LSTM"
+  }
+}
