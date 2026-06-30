@@ -11,7 +11,7 @@ import sys
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT / "ml"))
 
-from torch_model import FakeNewsLSTM  # noqa: E402
+from ml.torch_model import FakeNewsLSTM  # noqa: E402
 
 
 MODEL_PATH = PROJECT_ROOT / "ml" / "models" / "pytorch_lstm_fake_news.pt"
@@ -77,7 +77,18 @@ class TorchFakeNewsPredictor:
         predicted_class = int(torch.argmax(probabilities).item())
         confidence = float(probabilities[predicted_class].item())
 
-        label = "Potentially Fake" if predicted_class == 1 else "Likely Real"
+        fake_probability = float(probabilities[1].item())
+        real_probability = float(probabilities[0].item())
+
+        if fake_probability >= 0.75:
+            label = "Potentially Fake"
+            confidence = fake_probability
+        elif real_probability >= 0.75:
+            label = "Likely Real"
+            confidence = real_probability
+        else:
+            label = "Uncertain"
+            confidence = max(fake_probability, real_probability)
 
         return {
             "label": label,

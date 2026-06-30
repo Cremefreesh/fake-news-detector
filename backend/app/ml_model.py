@@ -5,6 +5,9 @@ def get_risk_level(label: str, confidence: float) -> str:
     if label == "Likely Real":
         return "Low"
 
+    if label == "Uncertain":
+        return "Medium"
+
     if confidence >= 0.85:
         return "High"
 
