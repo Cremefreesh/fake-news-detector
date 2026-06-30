@@ -25,14 +25,35 @@ export async function getCurrentPageText() {
   const [result] = await chrome.scripting.executeScript({
     target: { tabId: tab.id },
     func: () => {
-      const article = document.querySelector("article");
-      const title = document.title || "";
+      function getMetaContent(name) {
+        const tag =
+          document.querySelector(`meta[name="${name}"]`) ||
+          document.querySelector(`meta[property="${name}"]`);
 
-      const text = article
-        ? article.innerText
-        : document.body.innerText;
+        return tag ? tag.content : "";
+      }
 
-      return `${title}\n\n${text}`;
+      const title =
+        document.querySelector("h1")?.innerText ||
+        document.title ||
+        getMetaContent("og:title");
+
+      const description =
+        getMetaContent("description") ||
+        getMetaContent("og:description");
+
+      const article =
+        document.querySelector("article") ||
+        document.querySelector("main") ||
+        document.body;
+
+      const paragraphs = Array.from(article.querySelectorAll("p"))
+        .map((p) => p.innerText.trim())
+        .filter((text) => text.length > 40);
+
+      const articleText = paragraphs.join("\n\n");
+
+      return `${title}\n\n${description}\n\n${articleText}`.trim();
     },
   });
 
