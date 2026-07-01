@@ -1,0 +1,12 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: fake-news-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/fake_news_detector.db:/app/fake_news_detector.db
+    environment:
+      - DATABASE_URL=sqlite:///./fake_news_detector.db

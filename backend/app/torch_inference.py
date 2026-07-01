@@ -11,11 +11,18 @@ import sys
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT / "ml"))
 
-from torch_model import FakeNewsLSTM  # noqa: E402
+from ml.torch_model import FakeNewsLSTM  # noqa: E402
 
 
-MODEL_PATH = PROJECT_ROOT / "ml" / "models" / "pytorch_lstm_fake_news.pt"
-VOCAB_PATH = PROJECT_ROOT / "ml" / "models" / "pytorch_vocab.pkl"
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[1]
+
+MODEL_PATH = BASE_DIR / "ml" / "models" / "pytorch_lstm_fake_news.pt"
+VOCAB_PATH = BASE_DIR / "ml" / "models" / "pytorch_vocab.pkl"
+
+
 
 MAX_LENGTH = 300
 PAD_TOKEN = "<PAD>"
