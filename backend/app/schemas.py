@@ -1,8 +1,17 @@
 from pydantic import BaseModel, Field
+from datetime import datetime
 
 
 class PredictionRequest(BaseModel):
     text: str = Field(..., min_length=1)
+    url: str | None = None
+    title: str | None = None
+
+
+class SimilarArticle(BaseModel):
+    label: str
+    similarity: float
+    preview: str
 
 
 class PredictionResponse(BaseModel):
@@ -14,8 +23,17 @@ class PredictionResponse(BaseModel):
     similar_articles: list[SimilarArticle]
     explanation: str
 
-    
-class SimilarArticle(BaseModel):
+
+class HistoryItem(BaseModel):
+    id: int
+    url: str | None
+    title: str | None
     label: str
-    similarity: float
-    preview: str
+    confidence: float
+    risk_level: str
+    model_name: str
+    explanation: str
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
