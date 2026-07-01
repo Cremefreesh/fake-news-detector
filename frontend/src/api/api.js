@@ -16,6 +16,18 @@ export async function predictFakeNews(text) {
   return response.json();
 }
 
+export async function getHistory() {
+  const response = await fetch(`${API_BASE_URL}/history`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch history");
+  }
+
+  return response.json();
+}
+
+
+
 export async function getCurrentPageText() {
   const [tab] = await chrome.tabs.query({
     active: true,

@@ -53,3 +53,26 @@ h1 {
   color: #fca5a5;
   font-size: 14px;
 }
+
+.tab-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tab-button {
+  padding: 10px 12px;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: #020617;
+  color: #94a3b8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab-button.active {
+  background: #38bdf8;
+  color: #020617;
+  border-color: #38bdf8;
+}
