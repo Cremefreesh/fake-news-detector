@@ -12,14 +12,7 @@ RANDOM_STATE = 42
 
 
 def clean_text(text: str) -> str:
-    """
-    Basic cleaning for classical ML / simple neural models.
 
-    We keep this conservative:
-    - lowercase text
-    - remove URLs
-    - remove extra whitespace
-    """
 
     text = str(text).lower()
     text = re.sub(r"http\S+|www\S+", "", text)
