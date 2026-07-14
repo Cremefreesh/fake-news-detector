@@ -70,4 +70,67 @@ export async function getCurrentPageText() {
   });
 
   return result.result;
+
+}
+
+export async function getAdminStats() {
+  const response = await fetch(`${API_BASE_URL}/admin/stats`);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch admin statistics");
+  }
+
+  return response.json();
+}
+
+
+export async function getAdminHistory({
+  search = "",
+  label = "",
+  riskLevel = "",
+  page = 1,
+  pageSize = 10,
+} = {}) {
+  const params = new URLSearchParams();
+
+  if (search.trim()) {
+    params.set("search", search.trim());
+  }
+
+  if (label) {
+    params.set("label", label);
+  }
+
+  if (riskLevel) {
+    params.set("risk_level", riskLevel);
+  }
+
+  params.set("page", String(page));
+  params.set("page_size", String(pageSize));
+
+  const response = await fetch(
+    `${API_BASE_URL}/admin/history?${params.toString()}`
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch admin history");
+  }
+
+  return response.json();
+}
+
+
+export async function deleteAdminHistoryItem(historyId) {
+  const response = await fetch(
+    `${API_BASE_URL}/admin/history/${historyId}`,
+    {
+      method: "DELETE",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to delete history item");
+  }
+
+  return response.json();
 }
