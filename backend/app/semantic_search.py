@@ -1,18 +1,16 @@
 from pathlib import Path
 import pickle
-
-import numpy as np
 from sentence_transformers import SentenceTransformer
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-from pathlib import Path
-
-BASE_DIR = Path(__file__).resolve().parents[1]
-
-INDEX_PATH = BASE_DIR / "ml" / "models" / "semantic_index.pkl"
-
+INDEX_PATH = (
+    PROJECT_ROOT
+    / "ml"
+    / "models"
+    / "semantic_index.pkl"
+)
 
 class SemanticSearchService:
     def __init__(self):
