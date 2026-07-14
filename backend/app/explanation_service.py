@@ -3,7 +3,11 @@ def generate_explanation(
     confidence: float,
     risk_level: str,
     influential_words: list[str],
+    similar_articles: list | None = None,
 ) -> str:
+    if similar_articles is None:
+        similar_articles = []
+
     confidence_percent = round(confidence * 100)
 
     words = ", ".join(influential_words[:5])
