@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field
 from datetime import datetime
+
+from pydantic import BaseModel, Field
 
 
 class PredictionRequest(BaseModel):
@@ -28,6 +29,7 @@ class HistoryItem(BaseModel):
     id: int
     url: str | None
     title: str | None
+    input_text: str
     label: str
     confidence: float
     risk_level: str
@@ -37,3 +39,20 @@ class HistoryItem(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class AdminStatsResponse(BaseModel):
+    total_predictions: int
+    fake_predictions: int
+    real_predictions: int
+    predictions_today: int
+    low_confidence_predictions: int
+    average_confidence: float
+
+
+class AdminHistoryResponse(BaseModel):
+    items: list[HistoryItem]
+    total: int
+    page: int
+    page_size: int
+    total_pages: int
